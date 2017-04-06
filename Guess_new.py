@@ -26,15 +26,19 @@ def create_gamer():
     global name
     name = input("请输入你的游戏名称，或选择已经存在的玩家名称（%s）" %exist_names)
     user = []
-    if name in exist_names:
-        user = [name,game_record[name]]
-        print("你好%s，你已经玩了%d次游戏，共猜了%d轮，平均%.1f轮猜对，最少%d轮猜对"% (name,eval(user[1][0]),eval(user[1][1]),eval(user[1][1])/eval(user[1][0]),eval(user[1][2])))
-    elif name not in exist_names:
-        game_record[name] = [0,0,0]
-        print("你好%s，这是你第一次玩游戏哦，加油吧！"% (name))
-    global total_time,guess_time
-    total_time = 0
-    guess_time = 0
+    try:
+        if name in exist_names:
+            user = [name,game_record[name]]
+            print("你好%s，你已经玩了%d次游戏，共猜了%d轮，平均%.1f轮猜对，最少%d轮猜对"% (name,eval(user[1][0]),eval(user[1][1]),eval(user[1][1])/eval(user[1][0]),eval(user[1][2])))
+        elif name not in exist_names:
+            game_record[name] = [0,0,0]
+            print("你好%s，这是你第一次玩游戏哦，加油吧！"% (name))
+        global total_time,guess_time
+        total_time = 0
+        guess_time = 0
+    except:
+        print("请输入个名称试试")
+        create_gamer()
 
 #定义猜数字规则
 def compare(num1,num2):
