@@ -72,8 +72,8 @@ def guess_game():
 
 #记录游戏
 def record_game():
-    print("%s,你用了%d次猜出了答案" %(name,guess_time))
     global guess_time
+    print("%s,你用了%d次猜出了答案" %(name,guess_time))
     if guess_time < int(game_record[name][2]):
         min_time = guess_time
     elif int(game_record[name][2]) == 0:
